@@ -66,8 +66,8 @@ class App extends React.Component {
             <Login 
           Login={this.state.login}
           ></Login>
-
-<Signup
+<hr />
+          <Signup
           Signup={this.state.signup}
           ></Signup>
               <Filter
