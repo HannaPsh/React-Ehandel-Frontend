@@ -32,7 +32,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #c00a28;
+  color: #852102;
 }
 header {
   grid-area: header;
@@ -121,33 +121,8 @@ footer {
   background-color: #203040;
   color: white;
 }
-
-.cart-items li {
-  display: flex;
-}
-.cart-items li div {
-  padding: 0.5rem;
-}
-.cart-items li div:last-child {
-  flex: 1;
-}
-.right {
-  text-align: right;
-}
-.total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.total > div {
-  font-size: 2rem;
-}
-.total > div,
-.total > button {
-  flex: 1;
-}
-*/ .product-details {
+/* Product Details */
+.product-details {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -167,4 +142,43 @@ footer {
   right: 1rem;
   top: 2.5rem;
   z-index: 1000;
+}
+
+/* Order Details */
+
+.order-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.order-details li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-details li div {
+  padding: 10px;
+}
+.order-details .items {
+  text-align: right;
+  padding: 0;
+}
+.success-message {
+  color: green;
+}
+/* Orders */
+.orders {
+  width: 100%;
+  padding: 10px;
+}
+tbody > tr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+td {
+  padding: 5px;
+}
+th {
+  text-align: left;
 }
