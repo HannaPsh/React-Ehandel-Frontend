@@ -3,6 +3,8 @@ import Products from './Components/Products';
 import data from './data.json';
 import Filter from './Components/Filter';
 import Cart from './Components/cart/Cart';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
 class App extends React.Component {
   constructor() {
     super();
@@ -47,17 +49,27 @@ class App extends React.Component {
       <div className="grid-container">
         <header>
           <a href="/">Home Page</a>
-          
+      
+
             <Cart
               cartItems={this.state.cartItems}
               removeFromCart={this.removeFromCart}
               createOrder={this.createOrder}
             ></Cart>
           
+         
         </header>
         <main>
           <div className="content">
             <div className="main">
+
+            <Login 
+          Login={this.state.login}
+          ></Login>
+
+<Signup
+          Signup={this.state.signup}
+          ></Signup>
               <Filter
                 count={this.state.products.length}
                 size={this.state.size}
