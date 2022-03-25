@@ -139,37 +139,8 @@ footer {
     color: white;
 }
 
-.cart-items li {
-    display: flex;
-}
 
-.cart-items li div {
-    padding: 0.5rem;
-}
 
-.cart-items li div:last-child {
-    flex: 1;
-}
-
-.right {
-    text-align: right;
-}
-
-.total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.total>div {
-    font-size: 2rem;
-}
-
-.total>div,
-.total>button {
-    flex: 1;
-}
 
 */ .product-details {
     display: flex;
@@ -207,3 +178,6 @@ footer {
 .filter div {
     flex: 1;
 }
+
+/*  */
+
