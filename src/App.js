@@ -49,27 +49,23 @@ class App extends React.Component {
       <div className="grid-container">
         <header>
           <a href="/">Home Page</a>
-      
 
-            <Cart
-              cartItems={this.state.cartItems}
-              removeFromCart={this.removeFromCart}
-              createOrder={this.createOrder}
-            ></Cart>
-          
-         
+          <Cart
+            cartItems={this.state.cartItems}
+            removeFromCart={this.removeFromCart}
+            createOrder={this.createOrder}
+          ></Cart>
         </header>
         <main>
           <div className="content">
             <div className="main">
-
-            <Login 
+              {/* <Login 
           Login={this.state.login}
           ></Login>
 <hr />
           <Signup
           Signup={this.state.signup}
-          ></Signup>
+          ></Signup> */}
               <Filter
                 count={this.state.products.length}
                 size={this.state.size}
@@ -82,6 +78,7 @@ class App extends React.Component {
                 addToCart={this.addToCart}
               />
             </div>
+            <div className="sidebar"></div>
           </div>
         </main>
         <footer>All rights reserved</footer>
