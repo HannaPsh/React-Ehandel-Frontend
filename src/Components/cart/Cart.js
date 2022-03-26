@@ -38,7 +38,7 @@ export default class Cart extends Component {
   render() {
     const { cartItems } = this.props;
     return (
-      <div>
+      <>
       
         <CartToggle cartItems={cartItems} toggleCart={ this.toggleCart}/>
 
@@ -53,22 +53,22 @@ export default class Cart extends Component {
           />
 
           {cartItems.length !== 0 && (
-            <div className="cart">
+           
           
-              <div>
+              <div className="cart-proceed-btn">
                 <button
                   onClick={() => {
                     this.setState({ showCheckout: true });
                   }}
                   className="button primary"
                 >
-                  Proceed
+                  Checkout
                 </button>
               </div>
-            </div>
+            
           )}
         </div>
-      </div>
+      </>
     );
   }
 }

@@ -17,7 +17,7 @@ const CartItems = ({ cartItems, removeFromCart }) => {
           </ul>
           <div className="total">
             <div>
-              Total:{""}
+              <label>Total:{" "}</label>
               {formatCurrency(
                 cartItems.reduce((a, c) => a + c.price * c.count, 0)
               )}

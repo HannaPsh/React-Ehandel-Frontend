@@ -13,7 +13,7 @@ const CartItem = ({ item, removeFromCart }) => {
         <img src={item.image} alt={item.title} />
       </div>
       <div>
-        <div style={{ wordBreak: "break-word", width: "150px" }}>
+        <div className="cart-item-title">
           {item.title}
         </div>
       </div>
