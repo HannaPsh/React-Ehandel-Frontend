@@ -1,3 +1,3 @@
 export default function formatCurrency(num) {
-  return  Number(num.toFixed(1)).toLocaleString() + ' SEK';
+  return '$' + Number(num.toLocaleString()) + ' ';
 }
