@@ -8,10 +8,7 @@ export default class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      address: "",
-      showCheckout: false,
+      
       showCart: false,
     };
   }
@@ -21,9 +18,7 @@ export default class Cart extends Component {
   createOrder = (e) => {
     e.preventDefault();
     const order = {
-      name: this.state.name,
-      email: this.state.email,
-      address: this.state.address,
+     
       cartItems: this.props.cartItems,
     };
 
