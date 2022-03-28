@@ -86,7 +86,7 @@ class App extends React.Component {
                   addToCart={this.addToCart}
                 />
               </div>
-              <div className="sidebar"></div>
+              {/* <div className="sidebar"></div> */}
             </div>
           </main>
           <footer>All rights reserved</footer>
