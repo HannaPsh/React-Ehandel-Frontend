@@ -9,6 +9,7 @@ const Header = ({cartItems, removeFromCart, createOrder}) => {
       <header>
         <Link to="/">Home Page</Link>
         <Link to="/login">Login</Link>
+        <Link to="/signup">Signup</Link>
         <Cart
           cartItems={cartItems}
           removeFromCart={removeFromCart}

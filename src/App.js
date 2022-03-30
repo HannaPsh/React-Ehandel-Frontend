@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import Home from './Components/home/Home';
 import Header from './Components/header/Header';
 import Login from './Components/Login';
+import Signup from './Components/Signup';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 class App extends React.Component {
@@ -76,7 +77,7 @@ createOrder = (order) => {
           <Routes>
           
             <Route path='/login' element={<Login/>}/>
-            
+            <Route path='/signup' element={<Signup/>}/>
             <Route
               path="/"
               element={<Home products={this.state.products} addToCart={this.addToCart}
