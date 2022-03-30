@@ -70,7 +70,7 @@ class Products extends Component {
                   </p>
                   <p>{product.description}</p>
                   {!product.availableSizes ? (
-                    <div>Loading...</div>
+                    <div>Loading available sizes...</div>
                   ) : (
                     <p>
                       Available sizes:{' '}
@@ -78,6 +78,19 @@ class Products extends Component {
                         <span>
                           {' '}
                           <button className="button">{x}</button>
+                        </span>
+                      ))}
+                    </p>
+                  )}
+                  {!product.category ? (
+                    <div>Loading category name...</div>
+                  ) : (
+                    <p>
+                      Category:{' '}
+                      {product.category.map((i) => (
+                        <span>
+                          {' '}
+                          <button className="button">{i}</button>
                         </span>
                       ))}
                     </p>
