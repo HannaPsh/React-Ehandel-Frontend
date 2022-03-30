@@ -12,15 +12,7 @@ export default class Cart extends Component {
     };
   }
  
-  createOrder = (e) => {
-    e.preventDefault();
-    const order = {
-     
-      cartItems: this.props.cartItems,
-    };
-
-    this.props.createOrder(order);
-  };
+  
 
   toggleCart = (e) => {
     e.preventDefault();
@@ -50,7 +42,7 @@ export default class Cart extends Component {
               <div className="cart-proceed-btn">
                 <button
                   onClick={() => {
-                    this.setState({ showCheckout: true });
+                    this.setState();
                   }}
                   className="button primary"
                 >
