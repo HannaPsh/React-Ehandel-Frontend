@@ -10,7 +10,7 @@ const Header = ({ cartItems, removeFromCart, createOrder }) => {
           ICONIC
         </Link>
         <div className="Nav">
-          <Link to="/login">Login</Link> <Link to="/signup">Signup</Link>{' '}
+          <Link to="/login">Login</Link> 
           <Cart
             cartItems={cartItems}
             removeFromCart={removeFromCart}
