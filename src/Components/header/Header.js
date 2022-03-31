@@ -1,25 +1,25 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Cart from '../cart/Cart';
 
-
-const Header = ({cartItems, removeFromCart, createOrder}) => {
+const Header = ({ cartItems, removeFromCart, createOrder }) => {
   return (
     <div>
       <header>
-        <Link to="/">Home Page</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-        <Cart
-          cartItems={cartItems}
-          removeFromCart={removeFromCart}
-          createOrder={createOrder}
-              ></Cart>
-
-
+        <Link to="/" className="ICONIC">
+          ICONIC
+        </Link>
+        <div className="Nav">
+          <Link to="/login">Login</Link> <Link to="/signup">Signup</Link>{' '}
+          <Cart
+            cartItems={cartItems}
+            removeFromCart={removeFromCart}
+            createOrder={createOrder}
+          ></Cart>{' '}
+        </div>
       </header>
     </div>
   );
-}
+};
 
 export default Header;
