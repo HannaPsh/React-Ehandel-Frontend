@@ -45,9 +45,21 @@ header {
   padding: 0.5rem;
 }
 
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
 header a {
   color: #ffffff;
   text-decoration: none;
+}
+.ICONIC {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 200.5%;
 }
 
 main {
