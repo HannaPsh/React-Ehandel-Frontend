@@ -30,7 +30,7 @@ class Signup extends React.Component{
                         <input type='text' name='username' placeholder='username' required onChange={this.handleChange}/>
                         </div>
                       <div><label for="lastname">lastname</label>
-                        <input type='text' name='lastname' placeholder='username' required onChange={this.handleChange}/>
+                        <input type='text' name='lastname' placeholder='lastname' required onChange={this.handleChange}/>
                         </div>
                     <div><label for="InputEmail">Email</label>
                         <input type='email' name='email' placeholder='email...' required onChange={this.handleChange}/>
