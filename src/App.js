@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Products from './Components/Products';
 import data from './data.json';
@@ -13,84 +12,92 @@ import Signup from './Components/Signup';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      products: data.products
-      
-     , cartItems: localStorage.getItem('cartItems')
-        ? JSON.parse(localStorage.getItem('cartItems'))
-        : [],
-      size: 0,
-      sort: null,
+        constructor() {
+            super();
+            this.state = {
+                products: data.products
 
-    };
-  }
+                ,
+                cartItems: localStorage.getItem('cartItems') ?
+                    JSON.parse(localStorage.getItem('cartItems')) :
+                    [],
+                size: 0,
+                sort: null,
 
-  removeFromCart = (product) => {
-    const cartItems = this.state.cartItems.slice();
+            };
+        }
 
-    this.setState({
-      cartItems: cartItems.filter((x) => x._id !== product._id),
-    });
+        removeFromCart = (product) => {
+            const cartItems = this.state.cartItems.slice();
 
-    localStorage.setItem(
-      "cartItems",
-      JSON.stringify(cartItems.filter((x) => x._id !== product._id))
-    );
-  };
-  addToCart = (product) => {
-    const cartItems = this.state.cartItems.slice();
+            this.setState({
+                cartItems: cartItems.filter((x) => x._id !== product._id),
+            });
 
-    //Is already in cart
-    let alreadyInCart = false;
+            localStorage.setItem(
+                "cartItems",
+                JSON.stringify(cartItems.filter((x) => x._id !== product._id))
+            );
+        };
+        addToCart = (product) => {
+            const cartItems = this.state.cartItems.slice();
 
-    //Check if item is alreay in the cart
-    cartItems.forEach((item) => {
-      if (item._id === product._id) {
-        item.count++;
-        alreadyInCart = true;
-      }
-    });
+            //Is already in cart
+            let alreadyInCart = false;
 
-    if (!alreadyInCart) {
-      cartItems.push({ ...product, count: 1 });
-    }
+            //Check if item is alreay in the cart
+            cartItems.forEach((item) => {
+                if (item._id === product._id) {
+                    item.count++;
+                    alreadyInCart = true;
+                }
+            });
 
-    this.setState({ cartItems });
+            if (!alreadyInCart) {
+                cartItems.push({...product, count: 1 });
+            }
 
-    //Update local storage with new cart item list
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  };
+            this.setState({ cartItems });
 
-  render() {
-    return (
-      <Router>
-        <Provider store={store}>
-          <Header
-            cartItems={this.state.cartItems}
-            removeFromCart={this.removeFromCart}
-            createOrder={this.createOrder}
-          />
-          <Routes>
-          
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/signup' element={<Signup/>}/>
-            <Route
-              path="/"
-              element={<Home products={this.state.products} addToCart={this.addToCart}
-                size={this.state.size}
-                sort={this.state.sort}
-                filterProducts={this.filterProducts}
-                sortProducts={this.sortProducts}
-              />}
-            />
+            //Update local storage with new cart item list
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        };
 
-          </Routes>
-        </Provider>
-      </Router>
-    );
-  }
-}
+        render() {
+            return ( <
+                Router >
+                <
+                Provider store = { store } >
+                <
+                Header cartItems = { this.state.cartItems }
+                removeFromCart = { this.removeFromCart }
+                createOrder = { this.createOrder }
+                /> <
+                Routes >
 
-export default App;
+                <
+                Route path = '/login'
+                element = { < Login / > }
+                /> <
+                Route path = '/signup'
+                element = { < Signup / > }
+                /> <
+                Route path = "/"
+                element = { < Home products = { this.state.products }
+                    addToCart = { this.addToCart }
+                    size = { this.state.size }
+                    sort = { this.state.sort }
+                    filterProducts = { this.filterProducts }
+                    sortProducts = { this.sortProducts }
+                    />} /
+                    >
+
+                    <
+                    /Routes> <
+                    /Provider> <
+                    /Router>
+                );
+            }
+        }
+
+        export default App;
