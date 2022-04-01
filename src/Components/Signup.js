@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from "react";
-import "./Loginsignup.css";
+
+
+
 
 const Signup = () => {
   const [name, setName] = useState( [], () => {      
@@ -104,10 +106,10 @@ const Signup = () => {
     <>
       {submitted ? (
         <section>
-          <h1>Thank you for Registration</h1>
+          <h1>User {name} successfully registered!!</h1>
           <br />
           <p>
-            <a href="/home">Go to Home</a>
+            <a href="/">Go to Home</a>
           </p>
         </section>
       ) : (
@@ -117,7 +119,7 @@ const Signup = () => {
             className={setErrors ? "errors" : "offscreen"}
             aria-live="assertive"
           ></p>
-          <h2>Signup </h2>
+          <h2>Register </h2>
 
           <form onSubmit={handleSubmit}>
             <br />
@@ -142,6 +144,7 @@ const Signup = () => {
                 {errors}
               </p>
             )}
+            <br />
             <label htmlFor="lastname">Lastname:</label>
             <input
               type="text"
@@ -189,9 +192,9 @@ const Signup = () => {
               required
                // clear input
             />
-<div>
+<br/>
             <button>Signup</button>
-            </div>     
+           
              
           
           </form>
