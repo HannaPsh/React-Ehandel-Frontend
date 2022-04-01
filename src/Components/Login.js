@@ -1,44 +1,146 @@
-import React from 'react';
+import {  useState, useEffect } from "react";
+import React from "react";
+import "./Loginsignup.css"
 
-import './Loginsignup.css';
-class Login extends React.Component{
-    state={
-        email:'',
-        pwd:''
+const Login = () => {
+  const [name, setName] = useState( [], () => {      
+    const localData = localStorage.getItem ('name'); 
+    return localData ? JSON.parse(localData) : [];
+  });                                                        
+  const [password, setPassword] = useState( [], () => {
+    const localData = localStorage.getItem ('password');
+    return localData ? JSON.parse(localData) : [];
+  });     
+    
+
+
+ 
+  useEffect(() => {
+    setErrors("");
+  }, [name, password]);
+
+  useEffect (()=> {
+    localStorage.setItem('name', JSON.stringify(name))                         //localstorage
+    localStorage.setItem('password', JSON.stringify(password))
+  }, [name, password]);  
+
+
+  
+  
+     // States for checking the errors
+     const [submitted, setSubmitted] = useState(false);
+     const [errors, setErrors] = useState("");
+
+    const [validName, setValidName] = useState();
+    const [validPwd, setValidPwd] = useState();
+  
+    useEffect(() => {
+      setValidName();
+      setValidPwd();
+      setErrors("");
+    }, [name, password]);
+  
+  
+    function validateForm() {
+      let hasErrors = false;
+      if (!name) {
+        setValidName(true);
+        setErrors("Enter valid name");
+        hasErrors = true;
+        return hasErrors;
+      }
+      if (!password) {
+        setValidPwd(true);
+        setErrors("Enter valid password");
+        hasErrors = true;
+        return hasErrors;
+      }
     }
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
 
-    handleChange = (e) =>{
-        const {name,value} = e.target
-        this.setState({[name]:value})
-    }
+  
+      //Validate user input
+        const hasError = validateForm();
+        if (!hasError) {
+            setSubmitted(true)
+      
+        }
+  
+    };
+  
+    return (
+      <>
+        {submitted ? (
+          <section>
+            <h1>Thank you for registering</h1>
+            <br />
+            <p>
+              <a href="/">Home</a>
+            </p>
+          </section>
+        ) : (
+          <section>
+            <p
+             
+              className={setErrors ? "errors" : "offscreen"}
+              aria-live="assertive"
+            ></p>
+            <h2>Login</h2>
+  
+            <form onSubmit={handleSubmit}>
+              <br />
+              {validName && (
+                <p className="errmsg" aria-live="assertive">
+                  {errors}
+                </p>
 
-    handleSubmit = (e) =>{
-        e.preventDefault()
-        this.props.isLogin(true)
-    }
-    render(){
-        return(
-            <div className='div-login'>
+              )}
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                id="username"
+                autoComplete="off"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                required // clear input
+              />
+              
+  
+              <br />
+              {validPwd && (
+                <p className="errmsg" aria-live="assertive">
+                  {errors}
+                </p>
+              )}
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                autoComplete="off"
+                required onChange={(e) => setPassword(e.target.value)}
+                value={password} 
+            
+              />
+  
+    <button>Login</button>
 
-                <div>
-                    <form onSubmit = {this.handleSubmit}>
-                    <div><label for="Email">Email</label>
-                        <input type='email' name='email' placeholder='email...' required onChange={this.handleChange}/>
-                        </div>
-                  
-                        <label for="Password">password</label>
-                        <input type='password' name='pwd' placeholder='password...' required onChange={this.handleChange}/>
-                        <button onSubmit={this.handleSubmit}>Log In</button>
-                        <div className="register-text">
-          <p>
-            Not a user? Register <a href="Signup">Here</a>
-          </p>
-        </div>
-                    </form>
-                </div>
-            </div>
-        )
-    }
-}
-
-export default Login;
+        <p id="one">
+          
+            Not yet a User?
+            <br />
+                <span className="line">
+          <a href="Signup">Sign up now </a>
+                </span>
+    </p>
+</form>
+                 
+            
+            
+          </section>
+        )}
+      </>
+    );
+  }
+  export default Login;
