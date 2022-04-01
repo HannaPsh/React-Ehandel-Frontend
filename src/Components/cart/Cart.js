@@ -49,7 +49,7 @@ export default class Cart extends Component {
                 }}
                 className="button primary"
               >
-                <Link to="/order" onClick={()=>this.props.orderDetails(cartItems)}>Proceed</Link>
+                <Link to="/order">Proceed</Link>
               </button>
             </div>
           )}
