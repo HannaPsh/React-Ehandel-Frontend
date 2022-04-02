@@ -70,7 +70,7 @@ class App extends React.Component {
     return (
       <Router>
         <Provider store={store}>
-          <CookieConsent/>
+          <CookieConsent />
           <Header
             cartItems={this.state.cartItems}
             removeFromCart={this.removeFromCart}

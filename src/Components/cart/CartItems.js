@@ -4,6 +4,7 @@ import "./cart.css";
 import formatCurrency from "../../util";
 
 
+
 const CartItems = ({ cartItems, removeFromCart }) => {
   return (
     <div className="cart">
@@ -17,11 +18,9 @@ const CartItems = ({ cartItems, removeFromCart }) => {
             ))}
             </ul>
 
-         
-
           <div className="total">
-            <div>
-              <label>Total: </label>
+              <div>
+              <label>Total :</label>
               {formatCurrency(
                 cartItems.reduce((a, c) => a + c.price * c.count, 0)
               )}

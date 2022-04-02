@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import formatCurrency from "../../util";
 import "https://kit.fontawesome.com/a076d05399.js";
 import "./cart.css";
 import CartItems from "./CartItems";
@@ -9,18 +10,19 @@ export default class Cart extends Component {
     super(props);
     this.state = {
       showCart: false,
-    };
+      };
   }
 
 
-  toggleCart = (e) => {
-    e.preventDefault();
-    this.setState({ ...this.state, showCart: !this.state.showCart }); 
+  toggleCart = () => {   
+    this.setState({showCart: !this.state.showCart});
   };
 
   render() {
     const { cartItems } = this.props;
   
+
+    
     return (
       <>
         <CartToggle cartItems={cartItems} toggleCart={this.toggleCart} />
@@ -30,24 +32,16 @@ export default class Cart extends Component {
             this.state.showCart ? "toggle-cart-show" : "toggle-cart-hide"
           }
         >
-          
-          
           <CartItems
             cartItems={cartItems}
             removeFromCart={this.props.removeFromCart}
           />
-        
 
           {cartItems.length !== 0 && (
-            <div className="cart-proceed-btn">
-              <button
-                onClick={() => {
-                  this.setState();
-                }}
-                className="button primary"
-              >
-                <Link to="/order">Proceed</Link>
-              </button>
+            <div >
+              <Link className="cart-proceed-btn" role="button" to="/order">
+                Proceed
+              </Link>
             </div>
           )}
         </div>
