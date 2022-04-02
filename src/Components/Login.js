@@ -63,6 +63,7 @@ export default function Login() {
             <input
               type="email"
               id="email"
+              
               onChange={(e) => setEmail(e.target.value)}
               required
             />

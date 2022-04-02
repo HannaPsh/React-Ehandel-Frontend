@@ -10,6 +10,7 @@ const Header = ({ cartItems, removeFromCart }) => {
           ICONIC
         </Link>
         <div className="Nav">
+        <i class='far fa-user-circle'></i>
           <Link to="/login">Login</Link> 
           <Cart
             cartItems={cartItems}

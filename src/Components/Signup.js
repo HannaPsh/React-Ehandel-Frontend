@@ -106,7 +106,7 @@ const Signup = () => {
     <>
       {submitted ? (
         <section>
-          <h1>User {name} successfully registered!!</h1>
+          <p>User, <strong>{name}</strong> Successfully registered!</p>
           <br />
           <p>
             <a href="/">Go to Home</a>
