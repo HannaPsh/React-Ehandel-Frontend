@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Cart from '../cart/Cart';
 
-const Header = ({ cartItems, removeFromCart, createOrder }) => {
+const Header = ({ cartItems, removeFromCart }) => {
   return (
     <div>
       <header>
@@ -14,7 +14,7 @@ const Header = ({ cartItems, removeFromCart, createOrder }) => {
           <Cart
             cartItems={cartItems}
             removeFromCart={removeFromCart}
-            createOrder={createOrder}
+        
           ></Cart>{' '}
         </div>
       </header>

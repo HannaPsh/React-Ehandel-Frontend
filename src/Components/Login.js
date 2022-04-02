@@ -13,6 +13,7 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    
     let req = await fetch('http://127.0.0.1:5000/users/');
     let data = await req.json();
     for (let element in data) {

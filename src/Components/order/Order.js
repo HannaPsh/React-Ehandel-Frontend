@@ -1,5 +1,4 @@
 import React from 'react'
-import CartItem from '../cart/CartItem';
 import CartItems from '../cart/CartItems';
 
 
@@ -13,7 +12,7 @@ const Order = ({ cartItems, removeFromCart }) => {
         ))}
       </ul>
       <button className="button primary">
-        <a href="/login">Checkout</a>
+        <a href="/login" style={{"color":"white"}}>Checkout</a>
       </button>
     </div>
   );

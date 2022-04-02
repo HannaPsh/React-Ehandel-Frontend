@@ -1,15 +1,16 @@
 import React from "react";
-import Products from "./Components/Products";
+
 import data from "./data.json";
-import Cart from "./Components/cart/Cart";
+
 import store from "./store";
 import { Provider } from "react-redux";
 import Home from "./Components/home/Home";
 import Header from "./Components/header/Header";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Order from "./Components/order/Order";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 
 class App extends React.Component {
   constructor() {
@@ -39,6 +40,7 @@ class App extends React.Component {
       JSON.stringify(cartItems.filter((x) => x._id !== product._id))
     );
   };
+
   addToCart = (product) => {
     const cartItems = this.state.cartItems.slice();
 
@@ -70,7 +72,6 @@ class App extends React.Component {
           <Header
             cartItems={this.state.cartItems}
             removeFromCart={this.removeFromCart}
-            createOrder={this.createOrder}
           />{" "}
           <Routes>
             <Route path="/login" element={<Login />} />{" "}
@@ -97,6 +98,7 @@ class App extends React.Component {
                 />
               }
             />
+           
           </Routes>{" "}
         </Provider>{" "}
       </Router>
