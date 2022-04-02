@@ -10,6 +10,7 @@ import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Order from "./Components/order/Order";
+import CookieConsent from "./Components/CookieConsent";
 
 class App extends React.Component {
   constructor() {
@@ -67,6 +68,7 @@ class App extends React.Component {
     return (
       <Router>
         <Provider store={store}>
+          <CookieConsent/>
           <Header
             cartItems={this.state.cartItems}
             removeFromCart={this.removeFromCart}
