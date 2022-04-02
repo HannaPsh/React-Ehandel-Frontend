@@ -35,7 +35,9 @@ export default class CookieConsent extends Component {
       This site uses cookies. See our <button onClick={this.handleOpenModal}>Privacy policy</button> for more.
       </Consent>
       <Modal isOpen={this.state.showModal}>
-        
+      <h2>
+  Cookie Policy of ICONIC
+</h2>
       This document informs Users about the technologies that help this Website to achieve the purposes described below. Such technologies allow the Owner to access and store information (for example by using a Cookie) or use resources (for example by running a script) on a User’s device as they interact with this Website.
 
 For simplicity, all such technologies are defined as "Trackers" within this document – unless there is a reason to differentiate.
