@@ -6,7 +6,7 @@ import "https://kit.fontawesome.com/a076d05399.js";
 
 export default function Login() {
   const [email, setEmail] = useState();
-  const [name, setName] = useState(' ');
+  const [ setName] = useState(' ');
   const [password, setPassword] = useState(' ');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);

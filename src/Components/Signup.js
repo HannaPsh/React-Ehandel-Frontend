@@ -16,8 +16,8 @@ const Signup = () => {
    const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
-    const person= {name, password, email};
-    localStorage.setItem('submitted', JSON.stringify(person));
+    const person= {name, email};
+    localStorage.setItem('', JSON.stringify(person));
  
     
     await axios.post(`http://127.0.0.1:5000/users/`, {
