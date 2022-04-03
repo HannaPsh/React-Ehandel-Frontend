@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './Loginsignup.css';
 import axios from 'axios';
 
-const Signup = () => {
+const Signup = () => { 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
