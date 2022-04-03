@@ -2,24 +2,25 @@ import { useState, useEffect } from 'react';
 import './Loginsignup.css';
 import axios from 'axios';
 
-const Signup = () => { 
+const Signup = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    console.log(name, password, email, );
-  })
+    if (submitted) {
+      console.log('it works!');
+      localStorage.setItem('submitted', JSON.stringify(submitted));
+    }
+  }, [submitted]);
 
-
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
-    const person= {name, email};
-    localStorage.setItem('', JSON.stringify(person));
- 
-    
+    const person = { name, email };
+    localStorage.setItem('user', JSON.stringify(person));
+
     await axios.post(`http://127.0.0.1:5000/users/`, {
       email,
       name,
@@ -55,9 +56,9 @@ const Signup = () => {
             <input
               type="password"
               id="password"
-              required onChange={(e) => setPassword(e.target.value)}
+              required
+              onChange={(e) => setPassword(e.target.value)}
               value={password}
-              
             />
             <br />
             <label htmlFor="emails">Email:</label>
@@ -65,11 +66,9 @@ const Signup = () => {
               type="text"
               id="emails"
               autoComplete="off"
-              onChange={(e)  => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               required
               value={email}
-             
-              
             />
             <div>
               <button>Signup</button>
