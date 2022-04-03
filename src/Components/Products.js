@@ -95,8 +95,8 @@ class Products extends Component {
                       ))}
                     </p>
                   )}
-                  <div className="product-price">
-                    <div>{formatCurrency(product.price)}</div>
+                  <div className="product-price ">
+                    <div id="zoom">{formatCurrency(product.price)}</div>
                     <button
                       className="button primary"
                       onClick={() => {
@@ -116,6 +116,9 @@ class Products extends Component {
     );
   }
 }
-export default connect((state) => ({ products: state.products.filteredItems }), {
-  fetchProducts,
-})(Products);
+export default connect(
+  (state) => ({ products: state.products.filteredItems }),
+  {
+    fetchProducts,
+  }
+)(Products);

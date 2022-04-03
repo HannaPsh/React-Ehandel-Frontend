@@ -11,6 +11,7 @@ import Signup from "./Components/Signup";
 import Order from "./Components/order/Order";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CookieConsent from "./Components/CookieConsent";
+import Logout from "./Components/logout";
 
 
 
@@ -79,7 +80,7 @@ class App extends React.Component {
           />{" "}
           <Routes>
             <Route path="/login" element={<Login />} />{" "}
-         
+            <Route path="/logout" element={<Logout  />} />{" "}
             <Route path="/signup" element={<Signup />} />{" "}
             <Route
               path="/order"
