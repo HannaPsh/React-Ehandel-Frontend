@@ -8,7 +8,7 @@ const Order = ({ cartItems, removeFromCart }) => {
   return (
     <div>
       <h2>Order Details</h2>
-      <ul>
+      <ul className='order-items'>
         <CartItems cartItems={cartItems} removeFromCart={removeFromCart} />
       </ul>
       {/* <button className="button primary">

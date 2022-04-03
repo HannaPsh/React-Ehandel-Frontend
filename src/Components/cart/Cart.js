@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import formatCurrency from "../../util";
 import "https://kit.fontawesome.com/a076d05399.js";
 import "./cart.css";
 import CartItems from "./CartItems";
