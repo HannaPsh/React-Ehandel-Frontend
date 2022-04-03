@@ -1,17 +1,21 @@
-import React from 'react'
+import React from 'react';
 import Filter from '../Filter';
 import Products from '../Products';
 
-
-const Home = ({products, addToCart, size, sort, filterProducts, sortProducts}) => {
+const Home = ({
+  products,
+  addToCart,
+  size,
+  sort,
+  filterProducts,
+  sortProducts,
+}) => {
   return (
-
-      <div className="grid-container">
-
-        <main>
-          <div className="content">
-            <div className="main">
-              {/* 
+    <div className="grid-container">
+      <main>
+        <div className="content">
+          <div className="main">
+            {/* 
                  <Login 
           Login={this.state.login}
           ></Login>
@@ -20,26 +24,22 @@ const Home = ({products, addToCart, size, sort, filterProducts, sortProducts}) =
           Signup={this.state.signup}
                 ></Signup>  */}
 
-                      <Filter
-                          count={products.length}
-                          size={size}
-                          sort={sort}
-                          filterProducts={filterProducts}
-                          sortProducts={sortProducts}
-                      />
+            <Filter
+              count={products.length}
+              size={size}
+              sort={sort}
+              filterProducts={filterProducts}
+              sortProducts={sortProducts}
+            />
 
-              <Products
-                products={products}
-                addToCart={addToCart}
-              />
-            </div>
-            <div className="sidebar"></div>
+            <Products products={products} addToCart={addToCart} />
           </div>
-        </main>
-        <footer>All rights reserved</footer>
-      </div>
-
+          <div className="sidebar"></div>
+        </div>
+      </main>
+      <footer>Made by Apnan, Bhavani, Hourieh and Hanna</footer>
+    </div>
   );
-}
+};
 
-export default Home
+export default Home;
