@@ -46,6 +46,7 @@ header {
 }
 
 .Nav {
+  width: 30%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -205,5 +206,7 @@ footer {
 .btnConsent {
   color: #c00a28;
 }
-
+.userName {
+  color: #c00a28;
+}
 /*  */

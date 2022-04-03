@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Cart from '../cart/Cart';
 
-
-
-const Header = ({ cartItems, removeFromCart, submitted}) => {
-
+const Header = ({ cartItems, removeFromCart, submitted }) => {
+  const logoutFunction = () => {
+    localStorage.removeItem('user');
+  };
+  let userName = JSON.parse(localStorage.getItem('user'));
 
   return (
     <div>
@@ -13,18 +14,25 @@ const Header = ({ cartItems, removeFromCart, submitted}) => {
         <Link to="/" className="ICONIC">
           ICONIC
         </Link>
+
         <div className="Nav">
-
-
-        <i className='far fa-user-circle'></i>
- 
-        {localStorage.getItem("submitted")==='true' ? (<Link to="/logout">Logout</Link>):( <Link to="/login">Login</Link> )}
-        
-
-          <Cart
-            cartItems={cartItems}
-            removeFromCart={removeFromCart}
-          ></Cart>{' '}
+          {localStorage.getItem('submitted') === 'true' && (
+            <span className="userName">{userName.name}'s Profile</span>
+          )}
+          {localStorage.getItem('submitted') === 'true' ? (
+            <div>
+              <i className="far fa-user-circle"></i>
+              <Link to="/logout" onClick={logoutFunction}>
+                Logout
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <i className="far fa-user-circle"></i>
+              <Link to="/login">Login</Link>
+            </div>
+          )}
+          <Cart cartItems={cartItems} removeFromCart={removeFromCart}></Cart>{' '}
         </div>
       </header>
     </div>
