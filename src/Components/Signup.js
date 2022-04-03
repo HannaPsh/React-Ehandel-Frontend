@@ -10,13 +10,17 @@ const Signup = () => {
 
   useEffect(() => {
     console.log(name, password, email, );
-  }, [name, password, email,]);
+  })
 
-  const handleSubmit = async (e) => {
+
+   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
-    localStorage.setItem('submitted', JSON.stringify(submitted));
-    const req = await axios.post(`http://127.0.0.1:5000/users/`, {
+    const person= {name, password, email};
+    localStorage.setItem('submitted', JSON.stringify(person));
+ 
+    
+    await axios.post(`http://127.0.0.1:5000/users/`, {
       email,
       name,
       password,
