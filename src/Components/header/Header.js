@@ -14,15 +14,16 @@ const Header = ({ cartItems, removeFromCart, submitted}) => {
           ICONIC
         </Link>
         <div className="Nav">
-        <i class='far fa-user-circle'></i>
+
+
+        <i className='far fa-user-circle'></i>
  
         {localStorage.getItem("submitted")==='true' ? (<Link to="/logout">Logout</Link>):( <Link to="/login">Login</Link> )}
         
-         
+
           <Cart
             cartItems={cartItems}
             removeFromCart={removeFromCart}
-        
           ></Cart>{' '}
         </div>
       </header>
