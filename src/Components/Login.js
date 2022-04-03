@@ -1,146 +1,100 @@
-import {  useState, useEffect } from "react";
-import React from "react";
-import "./Loginsignup.css"
+import { useState, useEffect} from 'react';
+import React from 'react';
+import './Loginsignup.css';
+import { Navigate } from 'react-router-dom';
+import "https://kit.fontawesome.com/a076d05399.js";
 
-const Login = () => {
-  const [name, setName] = useState( [], () => {      
-    const localData = localStorage.getItem ('name'); 
-    return localData ? JSON.parse(localData) : [];
-  });                                                        
-  const [password, setPassword] = useState( [], () => {
-    const localData = localStorage.getItem ('password');
-    return localData ? JSON.parse(localData) : [];
-  });     
-    
+export default function Login() {
+  const [email, setEmail] = useState();
+  const [name, setName] = useState(' ');
+  const [password, setPassword] = useState(' ');
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
-
- 
-  useEffect(() => {
-    setErrors("");
-  }, [name, password]);
-
-  useEffect (()=> {
-    localStorage.setItem('name', JSON.stringify(name))                         //localstorage
-    localStorage.setItem('password', JSON.stringify(password))
-  }, [name, password]);  
-
-
-  
-  
-     // States for checking the errors
-     const [submitted, setSubmitted] = useState(false);
-     const [errors, setErrors] = useState("");
-
-    const [validName, setValidName] = useState();
-    const [validPwd, setValidPwd] = useState();
-  
-    useEffect(() => {
-      setValidName();
-      setValidPwd();
-      setErrors("");
-    }, [name, password]);
-  
-  
-    function validateForm() {
-      let hasErrors = false;
-      if (!name) {
-        setValidName(true);
-        setErrors("Enter valid name");
-        hasErrors = true;
-        return hasErrors;
-      }
-      if (!password) {
-        setValidPwd(true);
-        setErrors("Enter valid password");
-        hasErrors = true;
-        return hasErrors;
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let req = await fetch('http://127.0.0.1:5000/users/');
+    let data = await req.json();
+    for (let element in data) {
+      if (
+        email === data[element].email &&
+        password === data[element].password
+      ) {
+        setSubmitted(true);
+        setName(data[element].name);
+        console.log(password + ' ' + data[element].password);
+        localStorage.getItem ('data', JSON.stringify(data[element]));
+        
+        return;
+      } else {
+        setSubmitted(false);
+        setError(true);
+        console.log(password + ' ' + data[element].password);
+        console.log(data);
       }
     }
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-
-  
-      //Validate user input
-        const hasError = validateForm();
-        if (!hasError) {
-            setSubmitted(true)
-      
-        }
-  
-    };
-  
-    return (
-      <>
-        {submitted ? (
-          <section>
-            <h1>Thank you for registering</h1>
-            <br />
-            <p>
-              <a href="/">Home</a>
-            </p>
-          </section>
-        ) : (
-          <section>
-            <p
-             
-              className={setErrors ? "errors" : "offscreen"}
-              aria-live="assertive"
-            ></p>
-            <h2>Login</h2>
-  
-            <form onSubmit={handleSubmit}>
-              <br />
-              {validName && (
-                <p className="errmsg" aria-live="assertive">
-                  {errors}
-                </p>
-
-              )}
-              <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                id="username"
-                autoComplete="off"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-                required // clear input
-              />
-              
-  
-              <br />
-              {validPwd && (
-                <p className="errmsg" aria-live="assertive">
-                  {errors}
-                </p>
-              )}
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                autoComplete="off"
-                required onChange={(e) => setPassword(e.target.value)}
-                value={password} 
-            
-              />
-  
-    <button>Login</button>
-
-        <p id="one">
-          
-            Not yet a User?
-            <br />
-                <span className="line">
-          <a href="Signup">Sign up now </a>
-                </span>
-    </p>
-</form>
-                 
-            
-            
-          </section>
-        )}
-      </>
-    );
   }
-  export default Login;
+  useEffect(() => {
+    if (submitted) {
+      console.log('it works!');
+      localStorage.setItem('submitted', JSON.stringify(submitted));
+      <Navigate replace to="/Order" />;
+    }
+  }, [submitted]);
+
+  return (
+    <>
+      {' '}
+      {submitted ? (
+        <p>
+          Welcome,<strong>{name}</strong> ! Do you want to{' '}
+          <a href="/Order">proceed</a> to order
+        </p>
+      ) : (
+        <section>
+          <h2>Login</h2>
+
+          <form onSubmit={handleSubmit}>
+            <br />
+            
+            <label htmlFor="email">Email:</label>
+            
+            <input
+              type="email"
+              id="email"
+              
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <br />
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              autoComplete="off"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+<br/>
+            <button type="submit">Login</button>
+            {error && (
+              <div>
+                <br />
+                <span>Invalid email or password!</span>
+              </div>
+            )}
+
+            <p id="one">
+              Not yet a User?
+              <br />
+              <span className="line">
+                <a href="Signup">Sign up now </a>
+              </span>
+            </p>
+          </form>
+        </section>
+      )}
+    </>
+  );
+}
