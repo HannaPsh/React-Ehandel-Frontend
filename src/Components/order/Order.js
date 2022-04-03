@@ -1,6 +1,7 @@
 import React from 'react'
-import CartItem from '../cart/CartItem';
 import CartItems from '../cart/CartItems';
+import { Link } from "react-router-dom";
+
 
 
 const Order = ({ cartItems, removeFromCart }) => {
@@ -8,13 +9,16 @@ const Order = ({ cartItems, removeFromCart }) => {
     <div>
       <h2>Order Details</h2>
       <ul>
-        {cartItems.map((item) => (
-          <CartItems cartItems={cartItems} removeFromCart={removeFromCart} />
-        ))}
+        <CartItems cartItems={cartItems} removeFromCart={removeFromCart} />
       </ul>
-      <button className="button primary">
-        <a href="/login">Checkout</a>
-      </button>
+      {/* <button className="button primary">
+        <a href="/login" style={{"color":"white"}}>Checkout</a>
+      </button> */}
+      <div>
+        <Link className="button primary" role="button" to="/login">
+          Checkout
+        </Link>
+      </div>
     </div>
   );
 };

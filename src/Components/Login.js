@@ -3,6 +3,7 @@ import React from 'react';
 import './Loginsignup.css';
 import "https://kit.fontawesome.com/a076d05399.js";
 
+
 export default function Login() {
   const [email, setEmail] = useState();
   const [name, setName] = useState(' ');
@@ -14,6 +15,7 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    
     let req = await fetch('http://127.0.0.1:5000/users/');
     let data = await req.json();
     for (let element in data) {

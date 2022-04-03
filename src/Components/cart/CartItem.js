@@ -3,7 +3,7 @@ import formatCurrency from "../../util";
 import "./cart.css";
 
 
-const CartItem = ({ item, removeFromCart }) => {
+const CartItem = ({ item,removeFromCart, showCart }) => {
    
   return (
   

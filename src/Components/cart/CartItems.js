@@ -2,7 +2,8 @@ import React from "react";
 import CartItem from "./CartItem";
 import "./cart.css";
 import formatCurrency from "../../util";
-import Order from "../order/Order";
+
+
 
 const CartItems = ({ cartItems, removeFromCart }) => {
   return (
@@ -17,11 +18,9 @@ const CartItems = ({ cartItems, removeFromCart }) => {
             ))}
             </ul>
 
-         
-
           <div className="total">
-            <div>
-              <label>Total: </label>
+              <div>
+              <label>Total :</label>
               {formatCurrency(
                 cartItems.reduce((a, c) => a + c.price * c.count, 0)
               )}

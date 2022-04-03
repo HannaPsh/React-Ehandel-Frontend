@@ -1,7 +1,7 @@
 .toggle-cart-show {
   position: absolute;
   right: 1rem;
-  top: 4.5rem;
+  top: 8.5rem;
   z-index: 1000;
   display: block;
   background-color: #203040;
@@ -78,4 +78,18 @@
 }
 .button.primary {
    padding: 1rem 4rem;
+}
+
+
+.cart-proceed-btn {
+background-color: white;
+color: black;
+padding: 5px;
+text-decoration: none;
+border: 1px solid black;
+}
+.cart-proceed-btn:hover {
+background-color: black;
+color: white;
+
 }
