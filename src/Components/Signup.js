@@ -1,112 +1,33 @@
-import { useRef, useState, useEffect } from "react";
-
-
-
+import { useState, useEffect } from 'react';
+import './Loginsignup.css';
+import axios from 'axios';
 
 const Signup = () => {
-  const [name, setName] = useState( [], () => {      
-    const localData = localStorage.setItem ('name'); 
-    return localData ? JSON.parse(localData) : [];
-  });                                                        
-  const [password, setPassword] = useState( [], () => {
-    const localData = localStorage.setItem ('password');
-    return localData ? JSON.parse(localData) : [];
-  });     
-  const [emails, setEmails] = useState( [], () => {
-    const localData = localStorage.setItem ('emails');
-    return localData ? JSON.parse(localData) : [];
-  });   
-
- 
-  
-
-  useEffect(() => {         
-      setErrors('');
-  }, [name, password,emails])
-
-  useEffect (()=> {
-    localStorage.setItem('name', JSON.stringify(name))                         //localstorage
-    localStorage.setItem('password', JSON.stringify(password))
-    localStorage.setItem('emails', JSON.stringify(emails))
-  }, [name, password,emails]);  
-
-
-
-
- 
-  const [lastname, setLast] = useState("");
- 
-  
-  // States for checking the errors
-  const [submitted, setSubmitted] = useState();
-  const [errors, setErrors] = useState("");
-
-  const [validName, setValidName] = useState();
-  const [validLast, setValidLast] = useState();
-  const [validPwd, setValidPwd] = useState();
-  const [validEmail, setValidEmail] = useState();
-  
-  const userRef = useRef();
-  
-
-  
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-  
-    setValidName();
-    setValidLast();
-    setValidEmail();
-    setValidPwd();
-    setErrors("");
-  }, [name,lastname]);
-
-
-
-
-
-
-  
-  function validateForm() {
-    let hasErrors = false;
-    if (!name) {
-      setValidName(true);
-      setErrors("Enter valid Username");
-      hasErrors = true;
-      return hasErrors;
-    }
-
-      if (!lastname) {
-        setValidLast(true);
-        setErrors("Enter valid Lastname");
-        hasErrors = true;
-        return hasErrors;
-      }
-      
-    
-   
-    
-  }
-  
-
+    console.log(name, password, email, );
+  }, [name, password, email,]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-
-    //Validate user input
-      const hasError = validateForm();
-      if (!hasError) {
-        
-          setSubmitted(true)
-    
+    setSubmitted(true);
+    localStorage.setItem('submitted', JSON.stringify(submitted));
+    const req = await axios.post(`http://127.0.0.1:5000/users/`, {
+      email,
+      name,
+      password,
+    });
   };
-}
 
   return (
     <>
       {submitted ? (
         <section>
-          <p>User, <strong>{name}</strong> Successfully registered!</p>
+          <h1>Thank you for Registration</h1>
           <br />
           <p>
             <a href="/">Go to Home</a>
@@ -114,93 +35,45 @@ const Signup = () => {
         </section>
       ) : (
         <section>
-          <p
-            ref={userRef}
-            className={setErrors ? "errors" : "offscreen"}
-            aria-live="assertive"
-          ></p>
-          <h2>Register </h2>
-
+          <h2>Signup</h2>
           <form onSubmit={handleSubmit}>
             <br />
-
-            {validName && (
-              <p className="errmsg" aria-live="assertive">
-                {errors}
-              </p>
-            )}
             <label htmlFor="name">Username:</label>
             <input
               type="text"
               id="name"
-              ref={userRef}
               autoComplete="off"
               onChange={(e) => setName(e.target.value)}
               value={name}
-               // clear input
             />
-          {validLast && (
-              <p className="errmsg" aria-live="assertive">
-                {errors}
-              </p>
-            )}
             <br />
-            <label htmlFor="lastname">Lastname:</label>
-            <input
-              type="text"
-              id="lastname"
-              ref={userRef}
-              autoComplete="off"
-              onChange={(e) => setLast(e.target.value)}
-              value={lastname}
-               // clear input
-            />
-              
-
-            <br />
-            {validPwd && (
-              <p className="errmsg" aria-live="assertive">
-                {errors}
-              </p>
-            )}
             <label htmlFor="password">Password:</label>
             <input
               type="password"
               id="password"
-              ref={userRef} 
-            
-              autoComplete="off"
-              onChange={(e) => setPassword(e.target.value)}
+              required onChange={(e) => setPassword(e.target.value)}
               value={password}
-              required // clear input
+              
             />
-
             <br />
-            {validEmail && (
-              <p className="errmsg" aria-live="assertive">
-                {errors}
-              </p>
-            )}
             <label htmlFor="emails">Email:</label>
             <input
               type="text"
               id="emails"
-              ref={userRef}
               autoComplete="off"
-              onChange={(e) => setEmails(e.target.value)}
-              value={emails}
+              onChange={(e)  => setEmail(e.target.value)}
               required
-               // clear input
-            />
-<br/>
-            <button>Signup</button>
-           
+              value={email}
              
-          
+              
+            />
+            <div>
+              <button>Signup</button>
+            </div>
           </form>
         </section>
       )}
     </>
   );
-}
+};
 export default Signup;

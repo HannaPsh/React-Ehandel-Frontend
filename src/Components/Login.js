@@ -1,7 +1,6 @@
 import { useState, useEffect} from 'react';
 import React from 'react';
 import './Loginsignup.css';
-import { Navigate } from 'react-router-dom';
 import "https://kit.fontawesome.com/a076d05399.js";
 
 export default function Login() {
@@ -10,6 +9,8 @@ export default function Login() {
   const [password, setPassword] = useState(' ');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -37,21 +38,22 @@ export default function Login() {
   useEffect(() => {
     if (submitted) {
       console.log('it works!');
-      localStorage.setItem('submitted', JSON.stringify(submitted));
-      <Navigate replace to="/Order" />;
+      localStorage.getItem('submitted', JSON.stringify(submitted));
+      
     }
+    
   }, [submitted]);
 
   return (
     <>
       {' '}
       {submitted ? (
-        <p>
-          Welcome,<strong>{name}</strong> ! Do you want to{' '}
-          <a href="/Order">proceed</a> to order
-        </p>
+
+      window.location.href="/"
+      
       ) : (
         <section>
+
           <h2>Login</h2>
 
           <form onSubmit={handleSubmit}>
@@ -62,7 +64,7 @@ export default function Login() {
             <input
               type="email"
               id="email"
-              
+
               onChange={(e) => setEmail(e.target.value)}
               required
             />
