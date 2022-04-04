@@ -40,7 +40,7 @@ export default function Login() {
   useEffect(() => {
     if (submitted) {
       console.log('it works!');
-      localStorage.getItem('submitted', JSON.stringify(submitted));
+      localStorage.setItem('submitted', JSON.stringify(submitted));
       
     }
     
