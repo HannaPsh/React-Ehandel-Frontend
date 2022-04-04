@@ -10,9 +10,7 @@
       width: 100%;
 
  
-  /* padding-inline-start: 0px;
-  width: 100%;
-  list-style-type: none; */
+  
 
 }
 .order-items img {
@@ -37,13 +35,7 @@
 .right {
   text-align: right;
 }
-.total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  float: right;
-  
-}
+
 .total > div {
   font-size: 2rem;
 }
