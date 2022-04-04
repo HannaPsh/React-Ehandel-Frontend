@@ -46,6 +46,7 @@ header {
 }
 
 .Nav {
+  width: 30%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -207,5 +208,12 @@ footer {
   color: #c00a28;
 }
 
+<<<<<<< HEAD
 /*  */
 /*  */
+=======
+.userName {
+  color: #c00a28;
+}
+
+>>>>>>> 00bbe7e94b725021668db3015e8e414468a69d68
