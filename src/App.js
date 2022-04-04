@@ -74,6 +74,7 @@ class App extends React.Component {
       <Router>
         <Provider store={store}>
           <CookieConsent />
+           
           <Header
             cartItems={this.state.cartItems}
             removeFromCart={this.removeFromCart}
@@ -96,11 +97,7 @@ class App extends React.Component {
               element={
                 <Home
                   products={this.state.products}
-                  addToCart={this.addToCart}
-                  size={this.state.size}
-                  sort={this.state.sort}
-                  filterProducts={this.filterProducts}
-                  sortProducts={this.sortProducts}
+                  addToCart={this.addToCart}                  
                 />
               }
             />
@@ -108,6 +105,7 @@ class App extends React.Component {
           </Routes>{" "}
         </Provider>{" "}
       </Router>
+      
     );
   }
 }

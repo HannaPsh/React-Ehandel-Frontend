@@ -36,7 +36,6 @@ export default function Login() {
   }
   useEffect(() => {
     if (submitted) {
-      console.log('it works!');
       localStorage.setItem('submitted', JSON.stringify(submitted));
     }
   }, [submitted]);
