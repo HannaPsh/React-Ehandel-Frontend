@@ -37,7 +37,9 @@ const Home = ({
           <div className="sidebar"></div>
         </div>
       </main>
-      <footer>Made by Apnan, Bhavani, Hourieh and Hanna</footer>
+      <footer><p className='col-sm'>
+            &copy;{new Date().getFullYear()} ICONIC | All rights reserved |Privacy
+        </p></footer>
     </div>
   );
 };
