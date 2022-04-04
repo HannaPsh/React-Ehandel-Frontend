@@ -1,14 +1,14 @@
-import React from 'react'
-import CartItems from '../cart/CartItems';
+import React from "react";
+import CartItems from "../cart/CartItems";
 import { Link } from "react-router-dom";
-
-
+import "./order.css";
 
 const Order = ({ cartItems, removeFromCart }) => {
   return (
     <div>
       <h2>Order Details</h2>
-      <ul className='order-items'>
+
+      <ul className="order-items">
         <CartItems cartItems={cartItems} removeFromCart={removeFromCart} />
       </ul>
       {/* <button className="button primary">
@@ -23,4 +23,4 @@ const Order = ({ cartItems, removeFromCart }) => {
   );
 };
 
-export default Order
+export default Order;
