@@ -14,7 +14,7 @@ export default class Cart extends Component {
 
 
   toggleCart = () => {   
-    this.setState({showCart: !this.state.showCart});
+    this.setState({showCart: !this.state.showCart}); //true or false based on previous value
   };
 
   render() {

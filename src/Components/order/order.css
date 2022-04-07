@@ -1,6 +1,4 @@
-.order-total-items {
-  margin-left: 10px;
-}
+
 .order-items {
 
     color:rgb(9, 10, 11);
@@ -9,46 +7,19 @@
     box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
       width: 100%;
 
- 
-  
-
 }
 .order-items img {
   width: 150px;
-}
-.order-items li {
-  display: flex;
-  left: 0px;
-  align-items: center;
-}
-.order-items li div {
-  padding-left: 1rem;
-}
-.order-items li div:last-child {
-  flex: 1;
-}
-.order-item-title .order-items {
-  word-break: break-word;
-  width: 150px;
-  align-items: center;
-}
-.right {
-  text-align: right;
-}
-
-.total > div {
-  font-size: 2rem;
-}
-.total > div,
-.total > button {
-  flex: 2;
 }
 
 .button.primary {
    padding: 1rem 4rem;
 }
-
-
+.btn {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
 
 
 

@@ -1,7 +1,6 @@
 import React from "react";
 import CartItem from "./CartItem";
 import "./cart.css";
-import formatCurrency from "../../util";
 
 const CartItems = ({ cartItems, removeFromCart }) => {
   return (

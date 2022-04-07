@@ -23,7 +23,7 @@ class App extends React.Component {
       products: data.products,
 
       cartItems: localStorage.getItem("cartItems")
-        ? JSON.parse(localStorage.getItem("cartItems"))
+        ? JSON.parse(localStorage.getItem("cartItems")) //if this exist use this else empty array
         : [],
       size: 0,
       sort: null,
@@ -63,7 +63,7 @@ class App extends React.Component {
       cartItems.push({ ...product, count: 1 });
     }
 
-    this.setState({ cartItems });
+    this.setState({ cartItems }); // updates the state
 
     //Update local storage with new cart item list
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -83,6 +83,11 @@ class App extends React.Component {
             <Route path="/login" element={<Login />} />{" "}
             <Route path="/logout" element={<Logout  />} />{" "}
             <Route path="/signup" element={<Signup />} />{" "}
+            {/* Creating a rounte for order page.
+              This s takes two parameter
+               1. List of cart items
+               2. a function to remove cart items from the list
+             */}
             <Route
               path="/order"
               element={
