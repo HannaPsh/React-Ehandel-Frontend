@@ -110,6 +110,24 @@ export default function Profile() {
           <label> </label>
           <button>Update</button>
         </div>
+        {loading && (
+          <div className="form-item">
+            <label> </label>
+            <span>Processing...</span>
+          </div>
+        )}
+        {error && (
+          <div className="form-item">
+            <label> </label>
+            <span className="error">{error}</span>
+          </div>
+        )}
+        {success && (
+          <div className="form-item">
+            <label> </label>
+            <span className="success">Profile updated successfully.</span>
+          </div>
+        )}
         <div className="form-item">
           <label> </label>
           <button type="button" onClick={show}>
@@ -138,24 +156,6 @@ export default function Profile() {
                 ))}
               </li>
             </ul>
-          </div>
-        )}
-        {loading && (
-          <div className="form-item">
-            <label> </label>
-            <span>Processing...</span>
-          </div>
-        )}
-        {error && (
-          <div className="form-item">
-            <label> </label>
-            <span className="error">{error}</span>
-          </div>
-        )}
-        {success && (
-          <div className="form-item">
-            <label> </label>
-            <span className="success">Profile updated successfully.</span>
           </div>
         )}
       </form>
