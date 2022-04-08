@@ -27,7 +27,7 @@ export default class CookieConsent extends Component {
     return (
       <div><Consent 
          
-      debug={false}
+      debug={true}
      expires={365}
      style={{background:'#203040', textAlign:'left'}}
      buttonStyle={{color:'black', background:'white',fontSize:'14px'}}

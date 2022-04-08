@@ -22,7 +22,7 @@ export const filterProducts = (products, size) => (dispatch) => {
         },
     });
 };
-
+/*action take 2 paramiter that is filterproduct and short*/
 export const sortProducts = (filteredProducts, sort) => (dipatch) => {
     const sortedProducts = filteredProducts.slice();
     if (sort === "") {
@@ -33,7 +33,7 @@ export const sortProducts = (filteredProducts, sort) => (dipatch) => {
             a.price > b.price ?
             1 :
             -1 :
-            a.price > b.price ?
+            a.price < b.price ?
             -1 :
             1
         );
