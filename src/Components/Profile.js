@@ -135,6 +135,7 @@ export default function Profile() {
           </button>
         </div>
         {showHistory && (
+              
           <div>
             <ul>
               <li>

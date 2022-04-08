@@ -220,8 +220,8 @@ footer {
   color: red;
 }
 .toggle li {
-  width: 150px;
-  height: 200px;
+ /* width: 150px;
+  height: 200px;*/
   padding: 1rem;
   margin: 1rem;
   display: flex;

@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Cart from '../cart/Cart';
 
-const Header = ({ cartItems, removeFromCart, submitted }) => {
+const Header = ({ submitted }) => {
   const logoutFunction = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('cartItems');
   };
-  let userName = JSON.parse(localStorage.getItem('user'));
+  //let userName = JSON.parse(localStorage.getItem('user'));
+  let userName = 'test'
 
   return (
     <div>
@@ -36,7 +37,7 @@ const Header = ({ cartItems, removeFromCart, submitted }) => {
               <Link to="/login">Login</Link>
             </div>
           )}
-          <Cart cartItems={cartItems} removeFromCart={removeFromCart}></Cart>{' '}
+          <Cart />{' '}
         </div>
       </header>
     </div>
