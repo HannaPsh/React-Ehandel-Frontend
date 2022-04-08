@@ -192,7 +192,6 @@ footer {
   flex: 1;
 }
 
-
 .contentConsent {
   border: 0px;
   border-radius: 0px;
@@ -214,3 +213,19 @@ footer {
   color: #c00a28;
 }
 
+.success {
+  color: green;
+}
+.fail {
+  color: red;
+}
+.toggle li {
+  width: 150px;
+  height: 200px;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+}
+.toggle img {
+  width: 3rem;
+}
