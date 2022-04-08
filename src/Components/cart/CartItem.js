@@ -1,9 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../actions/cartActions";
 import formatCurrency from "../../util";
 import "./cart.css";
 
 
-const CartItem = ({ item,removeFromCart}) => {
+const CartItem = ({ item }) => {
+  
+  const dispatch = useDispatch()
    
   return (
   
@@ -23,7 +27,7 @@ const CartItem = ({ item,removeFromCart}) => {
           className="fa fa-trash"
           aria-hidden="true"
           onClick={() => {
-            removeFromCart(item);
+            dispatch(removeFromCart(item));
           }}
         ></i>
       </div>

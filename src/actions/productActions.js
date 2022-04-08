@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS } from '../types';
+import { ADD_TO_CART, FETCH_PRODUCTS } from '../types';
 import { FILTER_PRODUCTS_BY_SIZE } from '../types';
 import { ORDER_PRODUCTS_BY_PRICE } from '../types';
 
@@ -22,6 +22,9 @@ export const filterProducts = (products, size) => (dispatch) => {
         },
     });
 };
+
+
+
 
 export const sortProducts = (filteredProducts, sort) => (dipatch) => {
     const sortedProducts = filteredProducts.slice();

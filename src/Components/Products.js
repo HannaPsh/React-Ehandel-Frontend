@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
-import formatCurrency from '../util';
-import Fade from 'react-reveal/Fade';
-import Modal from 'react-modal';
-import Zoom from 'react-reveal/Zoom';
-import { fetchProducts } from '../actions/productActions';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import formatCurrency from "../util";
+import Fade from "react-reveal/Fade";
+import Modal from "react-modal";
+import Zoom from "react-reveal/Zoom";
+import { fetchProducts } from "../actions/productActions";
+import { addToCart } from "../actions/cartActions";
+
+import { connect } from "react-redux";
 
 class Products extends Component {
   constructor(props) {
@@ -35,7 +37,7 @@ class Products extends Component {
                 <li key={product._id}>
                   <div className="product">
                     <a
-                      href={'#' + product._id}
+                      href={"#" + product._id}
                       onClick={() => this.openModal(product)}
                     >
                       <img src={product.image} alt={product.title}></img>
@@ -47,7 +49,7 @@ class Products extends Component {
                         onClick={() => this.props.addToCart(product)}
                         className="button primary"
                       >
-                        Add to cart
+                        Add to cart 
                       </button>
                     </div>
                   </div>
@@ -73,10 +75,10 @@ class Products extends Component {
                     <div>Loading available sizes...</div>
                   ) : (
                     <p>
-                      Available sizes:{' '}
+                      Available sizes:{" "}
                       {product.availableSizes.map((x) => (
                         <span>
-                          {' '}
+                          {" "}
                           <button className="button">{x}</button>
                         </span>
                       ))}
@@ -86,10 +88,10 @@ class Products extends Component {
                     <div>Loading category name...</div>
                   ) : (
                     <p>
-                      Category:{' '}
+                      Category:{" "}
                       {product.category.map((i) => (
                         <span>
-                          {' '}
+                          {" "}
                           <button className="button">{i}</button>
                         </span>
                       ))}
@@ -120,5 +122,6 @@ export default connect(
   (state) => ({ products: state.products.filteredItems }),
   {
     fetchProducts,
+    addToCart,
   }
 )(Products);
