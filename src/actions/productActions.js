@@ -1,4 +1,4 @@
-import { ADD_TO_CART, FETCH_PRODUCTS } from '../types';
+import {FETCH_PRODUCTS } from '../types';
 import { FILTER_PRODUCTS_BY_SIZE } from '../types';
 import { ORDER_PRODUCTS_BY_PRICE } from '../types';
 

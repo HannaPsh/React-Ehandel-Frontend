@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, {useState } from "react";
 import "https://kit.fontawesome.com/a076d05399.js";
 import "./cart.css";
 import CartItems from "./CartItems";
