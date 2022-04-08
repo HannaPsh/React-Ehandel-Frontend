@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Cart from '../cart/Cart';
 
-const Header = ({ submitted }) => {
+const Header = ({ cartItems, removeFromCart, submitted }) => {
   const logoutFunction = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('cartItems');
   };
   let userName = JSON.parse(localStorage.getItem('user'));
 
@@ -17,7 +18,10 @@ const Header = ({ submitted }) => {
 
         <div className="Nav">
           {localStorage.getItem('submitted') === 'true' && (
-            <span className="userName">{userName.name}'s Profile</span>
+            <span className="userName">
+              {' '}
+              <Link to="/profile">{userName.name}'s Profile</Link>
+            </span>
           )}
           {localStorage.getItem('submitted') === 'true' ? (
             <div>
@@ -32,7 +36,7 @@ const Header = ({ submitted }) => {
               <Link to="/login">Login</Link>
             </div>
           )}
-          <Cart />{' '}
+          <Cart cartItems={cartItems} removeFromCart={removeFromCart}></Cart>{' '}
         </div>
       </header>
     </div>
