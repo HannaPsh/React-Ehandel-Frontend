@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import formatCurrency from '../util';
+import axios from 'axios';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -41,7 +42,17 @@ export default function Profile() {
   const [password, setPassword] = useState(userName.password);
   const [orders, setOrders] = useState(userName.orders);
   const [showHistory, setShowHistory] = useState(false);
-  function show() {
+  async function show() {
+    try {
+      const data = await axios.get(
+        `http://127.0.0.1:5000/users/${userName._id}`
+      );
+      let updatedOrders = data.data.orders;
+      setOrders(updatedOrders);
+    } catch (err) {
+      dispatch({ type: 'LOGIN_FAIL', payload: err.message });
+    }
+
     if (showHistory === false) {
       setShowHistory(true);
     } else {
@@ -71,10 +82,20 @@ export default function Profile() {
     } catch (err) {
       dispatch({ type: 'UPDATE_FAIL', payload: err.message });
     }
+    /* ######################################################################## */
+    try {
+      const data = await axios.get(
+        `http://127.0.0.1:5000/users/${userName._id}`
+      );
+      let updatedName = data.data.name;
+      setName(updatedName);
+    } catch (err) {
+      dispatch({ type: 'LOGIN_FAIL', payload: err.message });
+    }
   };
   return (
     <div>
-      <h1>{userName.name}'s Profile</h1>
+      <h1>{name}'s Profile</h1>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-item">
           <label>Name:</label>
@@ -140,9 +161,9 @@ export default function Profile() {
             <ul>
               <li>
                 {' '}
-                {userName.orders.map((o) => (
+                {orders.map((o) => (
                   <div className="toggle">
-                    <li key={o._id} id={o._id}>
+                    <section key={o._id} id={o._id}>
                       <div>
                         <img src={o.image} alt={o.title} />
                       </div>
@@ -152,7 +173,7 @@ export default function Profile() {
                       <div>
                         {formatCurrency(o.price)} {''}
                       </div>
-                    </li>
+                    </section>
                   </div>
                 ))}
               </li>
