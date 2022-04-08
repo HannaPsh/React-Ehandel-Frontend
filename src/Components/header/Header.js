@@ -7,8 +7,8 @@ const Header = ({ submitted }) => {
     localStorage.removeItem('user');
     localStorage.removeItem('cartItems');
   };
-  //let userName = JSON.parse(localStorage.getItem('user'));
-  let userName = 'test'
+  let userName = JSON.parse(localStorage.getItem('user'));
+  /* let userName = 'test' */
 
   return (
     <div>

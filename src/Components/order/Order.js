@@ -2,48 +2,70 @@ import React, { useState, useEffect } from 'react';
 import CartItems from '../cart/CartItems';
 import { Link } from 'react-router-dom';
 import './order.css';
+import axios from 'axios';
 
 const Order = ({ cartItems, removeFromCart }) => {
   let userName = JSON.parse(localStorage.getItem('user'));
   let cart = JSON.parse(localStorage.getItem('cartItems'));
   /* ##################################################### */
 
-  useEffect(() => {
-    // Update the document title using the browser API
-    if (userName) {
-      let updated = userName.orders.concat(cart);
-      setOrders(updated);
-      setName(userName.name);
-      setEmail(userName.email);
-      setPassword(userName.password);
-    }
-  });
-  /* push doesn't work for some reason, concat puts the object into the array in API SEPARATELY */
-  /* ########################################################## */
-
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
-  const [orders, setOrders] = useState('');
+  const [orders, setOrders] = useState([]);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
-  const orderIsPaid = async () => {
+  useEffect(() => {
+    // Update the document title using the browser API
     if (userName) {
+      async function fetchOrders() {
+        try {
+          const data = await axios.get(
+            `http://127.0.0.1:5000/users/${userName._id}`
+          );
+          let updatedOrders = data.data.orders;
+
+          setOrders(updatedOrders);
+          console.log(updatedOrders);
+          console.log(cart);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      fetchOrders();
+      setName(userName.name);
+      setEmail(userName.email);
+      setPassword(userName.password);
+    }
+  }, []);
+  /* push doesn't work for some reason, concat puts the object into the array in API SEPARATELY */
+  /* ########################################################## */
+  /* 
+  const [success, setSuccess] = useState(false);
+  const [fail, setFail] = useState(false);
+  const [orders, setOrders] = useState([]);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState(''); */
+
+  const orderIsPaid = async () => {
+    let updatedArray = cart.concat(orders);
+    setOrders(updatedArray);
+    if (userName) {
+      console.log(updatedArray);
+      console.log(cart.concat(orders));
+      console.log(orders);
+
       try {
         const res = await fetch(`http://127.0.0.1:5000/users/${userName._id}`, {
           method: 'PATCH',
-          body: JSON.stringify({ ...userName, name, orders, email, password }),
+          body: JSON.stringify({ ...userName, orders: updatedArray }),
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
         });
         const updatedUser = await res.json();
-        /* 
-        setOrders(userName.orders.concat(cart));
-        setName(userName.name);
-        setEmail(userName.email);
-        setPassword(userName.password); */
       } catch (err) {
         console.log(err);
       }
