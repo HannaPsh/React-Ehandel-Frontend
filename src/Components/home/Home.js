@@ -4,7 +4,7 @@ import Products from '../Products';
 
 const Home = ({
   products,
-  addToCart,
+  
   size,
   sort,
   filterProducts,
@@ -32,7 +32,7 @@ const Home = ({
               sortProducts={sortProducts}
             />
 
-            <Products products={products} addToCart={addToCart} />
+            <Products products={products} />
           </div>
           <div className="sidebar"></div>
         </div>

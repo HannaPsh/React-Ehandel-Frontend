@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS } from '../types';
+import {FETCH_PRODUCTS } from '../types';
 import { FILTER_PRODUCTS_BY_SIZE } from '../types';
 import { ORDER_PRODUCTS_BY_PRICE } from '../types';
 
@@ -22,7 +22,6 @@ export const filterProducts = (products, size) => (dispatch) => {
         },
     });
 };
-/*action take 2 paramiter that is filterproduct and short*/
 export const sortProducts = (filteredProducts, sort) => (dipatch) => {
     const sortedProducts = filteredProducts.slice();
     if (sort === "") {
